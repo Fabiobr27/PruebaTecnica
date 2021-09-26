@@ -1,0 +1,88 @@
+{% extends "plantillaBase.php.twig" %}
+{% block script %}
+
+{% endblock %}
+
+{% block contenido %}
+
+
+    <!-- Ventana Editar Registros CRUD -->
+    <div class="modal fade" id="edit_{{item.idEmpresa}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h4 class="modal-title">Editar Empresa</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <form method="GET" action="index.php?con=Empresa&ope=editarEmpresa&idEmpresa={{item.idEmpresa}}">
+                            <input type="hidden" name="con" value="Empresa"/>
+                            <input type="hidden" name="ope" value="editarEmpresa"/>
+                            <input type="hidden" name="idEmpresa" value="{{item.idEmpresa }}"/>
+                            <input type="hidden" name="idUsu" value="{{ idUsu }}"/>
+
+                            <div class="form-group">
+                                <label style="color: black">Name</label>
+                                <input type="text" class="form-control" name="nombre" value="{{ item.nombre }}"/>
+                            </div>
+                            <div class="form-group">
+                                <label style="color: black">Telefono</label>
+                                <input type="text" class="form-control" name="telefono" value="{{ item.telefono }}"/>
+
+                            </div>
+
+                            <div class="form-group">
+                                <label style="color: black">Email</label>
+                                <input type="email" class="form-control" name="email" value="{{ item.email }}"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label style="color: black">Sector</label>
+                                <select  class="form-control input-sm" name="sector" >
+                                    <!-- Opciones de la lista -->
+                                    {% for data in sec %}
+                                        <option value={{ data.id }}>{{   data.nombreSector  }}</option>
+
+                                    {% endfor %}
+                                </select>
+                            </div>
+                    </div>
+                </div> 
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+                    <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-check"></span> Actualizar Ahora</a>
+                        </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete -->
+    <div class="modal fade" id="delete_{{item.idEmpresa}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Eliminar Empresa</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                </div>
+                <div class="modal-body">	
+                    <p class="text-center">¿Esta seguro de Borrar el registro?</p>
+                    <h2 class="text-center">{{ item.nombreEmpresa }}</h2>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>
+                    <a href="index.php?con=Empresa&ope=eliminarEmpresa&id={{item.idEmpresa}}" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Si</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

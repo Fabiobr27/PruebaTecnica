@@ -1,0 +1,70 @@
+{% extends "plantillaLogin.php.twig" %}
+
+{% block titulo %}
+    <!--Fabio Benitez Ramirez-->
+{% endblock %}
+{% block contenido %}
+
+
+    <div class="container">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title">Vincular Sectores</h4>
+                <button type="button" class="close" data-dismiss="modal" onclick="location.href = 'index.php?con=Usuario&ope=mostrar'">&times;</button>
+
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <form method="GET" action=index.php?con=Usuario&ope=vincularSectores">
+                        <input type="hidden" name="con" value="Usuario"/>
+                        <input type="hidden" name="ope" value="VincularSector"/>
+                        <input type="hidden" name="idUsuario" value="{{ dat.idUsuario}}"/>
+
+
+                        <div class="form-group">
+                            <label style="color: black">Sectores ya vinculados</label>
+                            <ul class="list-group">
+
+                                <!-- Opciones de la lista -->
+                                {% for sector in secVin %}
+
+                                    <li class="list-group-item">{{ sector.nombreSector }}</li>
+                                    {% endfor %}
+
+
+                            </ul>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label style="color: black">Sectores para vincular</label>
+
+                            <select  class="form-control input-sm" name="sector" required>
+                                <!-- Opciones de la lista -->
+                                <option value=""></option>
+
+                                {% for sectores in data  %}
+
+                                    <option value={{ sectores.id }}> {{ sectores.nombreSector }}</option>
+
+
+                                {% endfor %}
+
+
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default"  onclick="location.href = 'index.php?con=Usuario&ope=mostrar'" ><span class="glyphicon glyphicon-remove"></span> Cancelar</button>
+                            <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-check"></span> Enviar</a>
+                                </form>
+                        </div>
+
+                </div>
+
+            {% endblock %}
+

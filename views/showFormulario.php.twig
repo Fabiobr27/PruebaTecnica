@@ -1,0 +1,129 @@
+{% extends "plantillaLogin.php.twig" %}
+
+{% block titulo %}
+    <!--Fabio Benitez Ramirez-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        function mostrar(id) {
+            if (id == "fisica") {
+                $("#fisica").show();
+                $("#juridica").hide();
+
+            }
+
+            if (id == "juridica") {
+                $("#fisica").hide();
+                $("#juridica").show();
+
+            }
+
+        }
+    </script>
+
+{% endblock %}
+{% block contenido %}
+
+
+    <div class="container">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title">Registro</h4>
+                <button type="button" class="close" data-dismiss="modal" onclick="location.href = 'index.php'">&times;</button>
+
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <form method="GET" action="#">
+
+
+
+                        <div class="form-group">
+                            <label style="color: black">Pais</label>
+                            <select id="paises" name="paises" >
+                                <option value="España">España</option>
+                                <option value="Inglaterra">Inglaterra</option>
+                                <option value="Francia">Francia</option>
+
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label style="color: black">Tipo Persona</label>
+                            <select id="status" name="status" onChange="mostrar(this.value);">
+                                <option selected="true" disabled="disabled">seleccione el tipo de Persona</option>
+                                <option value="fisica">Fisica</option>
+                                <option value="juridica">Juridica</option>
+
+                            </select>
+
+                        </div>
+
+                        <div id="fisica" class="element" style="display: none;">
+                            <h3>Si eres fisica...</h3>
+                            <div class="form-group">
+                                <label style="color: black">Nombre</label>
+                                <input type="text" class="form-control" name="nombre" />
+                            </div>
+                            <div class="form-group">
+                                <label style="color: black">Apellido</label>
+                                <input type="text" class="form-control" name="apellido" />
+
+                            </div>
+
+                            <div class="form-group">
+                                <label style="color: black">Tipo Documento</label>
+                                <select id="paises" name="paises" >
+                                    <option value="España">Dni</option>
+                                    <option value="Inglaterra">Nie</option>
+                                    <option value="Francia">Pasaporte</option>
+
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <div id="juridica" class="element" style="display: none;">
+                            <h2>Si eres juridica...</h2>
+                            <div class="form-group">
+                                <label style="color: black">Nombre de la sociedad</label>
+                                <input type="text" class="form-control" name="nombreSociedad" />
+                            </div>
+                            <div class="form-group">
+                                <label style="color: black">Tipo Documento</label>
+                                <select id="paises" name="paises" >
+                                    <option value="España">Nif</option>
+                                    <option value="Inglaterra">Nie</option>
+
+
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label style="color: black">Ciudad</label>
+                            <input type="text" class="form-control" name="ciudad" />
+
+                        </div>
+                        <div class="form-group">
+                            <label style="color: black">Calle</label>
+                            <input type="text" class="form-control" name="calle" />
+
+                        </div
+
+
+
+
+                </div>
+            </div> 
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>
+                <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-check"></span> Enviar</a>
+                    </form>
+            </div>
+
+        </div>
+
+    {% endblock %}
+

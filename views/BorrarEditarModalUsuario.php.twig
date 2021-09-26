@@ -1,0 +1,89 @@
+{% extends "plantillaBase.php.twig" %}
+{% block script %}
+
+{% endblock %}
+
+{% block contenido %}
+
+
+    <!-- Ventana Editar Registros CRUD -->
+    <div class="modal fade" id="edit_{{item.idUsuario}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h4 class="modal-title">Editar Usuario</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <form method="GET" action="index.php?con=Usuario&ope=editarUsuario&idUsuario={{item.idUsuario}}">
+                            <input type="hidden" name="con" value="Usuario"/>
+                            <input type="hidden" name="ope" value="editarUsuario"/>
+                            <input type="hidden" name="idUsuario" value="{{item.idUsuario }}"/>
+                            <input type="hidden" name="idUsu" value="{{ idUsu }}"/>
+
+                            <div class="form-group">
+                                <label style="color: black">Nombre</label>
+                                <input type="text" class="form-control" name="nombre" value="{{ item.nombreUsuario }}"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label style="color: black">Apellido</label>
+                                <input type="text" class="form-control" name="apellido" value="{{ item.Apellido}}"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label style="color: black">Email</label>
+                                <input type="text" class="form-control" name="email" value="{{ item.email }}"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label style="color: black">rol</label>
+                                <select  class="form-control input-sm" name="rol" required>
+                                    <!-- Opciones de la lista -->
+                                    <option value=""></option>
+                                    <option value="cliente">cliente</option>
+                                    <option value="admin">admin</option>
+
+
+                                </select>
+                            </div>
+                    </div>
+                </div> 
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>
+                    <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-check"></span> Actualizar Ahora</a>
+                        </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete -->
+    <div class="modal fade" id="delete_{{item.idUsuario}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Eliminar Usuario</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                </div>
+                <div class="modal-body">	
+                    <p class="text-center">¿Esta seguro de Borrar el usuario?</p>
+                    <h2 class="text-center">{{ item.nombreUsuario }} {{ item.Apellido }}</h2>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>
+                    <a href="index.php?con=Usuario&ope=eliminarUsuario&id={{item.idUsuario}}" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Si</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

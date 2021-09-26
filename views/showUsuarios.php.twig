@@ -1,0 +1,54 @@
+{% extends "plantillaBase.php.twig" %}
+
+
+{% block titulo %}
+    <!--Fabio Benitez Ramirez-->
+    <h1 style="color: white" class="mt-4">Usuarios</h1>
+
+{% endblock %}
+
+{% block contenido %}
+
+
+    <a href="#addnew" class="btn btn-primary" data-toggle="modal"><span class="glyphicon glyphicon-plus"></span> Nuevo Usuario</a>
+    <a href="index.php" class="btn btn-primary" > Atras</a>
+
+    <p></p>
+    {% if dat is empty %}
+        <h3 style="color: white">En este momento no hay Sectores</h3>
+    {% else %}
+
+        <div id="columnas" class="row mb-3 "> <table class="table table-striped table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col">id</th>
+                        <th scope="col">Nombre </th>
+                        <th scope="col">Apellidos</th>
+                        <th scope="col">email</th>
+                        <th scope="col">rol</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in dat %}
+                        <tr>
+                            <th scope="col">{{ item.idUsuario }}</th>
+                            <th scope="col">{{ item.nombreUsuario }}</th>
+                            <th scope="col">{{ item.Apellido }}</th>
+                            <th scope="col">{{ item.email }}</th>      
+                            <th scope="col">{{ item.rol}}</th>
+                            <th scope="col"><a href="#edit_{{ item.idUsuario }}" class="btn btn-success btn-sm" data-toggle="modal"><span class="glyphicon glyphicon-edit"></span> Editar</a></th>
+                            <th scope="col"><a href="#delete_{{ item.idUsuario }}" class="btn btn-danger btn-sm" data-toggle="modal"><span class="glyphicon glyphicon-trash"></span> Borrar</a>
+                            <th scope="col"><a href="index.php?con=Usuario&ope=showvincularSectores&idUsuario={{ item.idUsuario }}" class="btn btn-info btn-sm" data-toggle="modal"> Vincular Sector</a> 
+                        </tr>
+                        {%  include 'BorrarEditarModalUsuario.php.twig'%} 
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        </div>   
+
+
+    {% endif %}
+    {%  include 'AgregarModalRegistro.php.twig'%} 
+{% endblock %}
+

@@ -1,0 +1,76 @@
+{% extends "plantillaLogin.php.twig" %}
+
+{% block titulo %}
+    <!--Fabio Benitez Ramirez-->
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#formButton").click(function () {
+                $("li").toggle();
+                $("#formButton").toggle();
+            });
+        });
+    </script>
+
+{% endblock %}
+{% block contenido %}
+    <div class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Clientes</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+
+
+                <li class="nav-item">
+                    <a class="nav-link" href="index.php?con=login&ope=logout">Salir</a>
+                </li>
+
+
+            </ul> 
+
+        </div>	<!-- end-collapse -->
+    </div>
+    <div class="container mt-5 mb-3">
+        <div class="row">
+
+            <div class="col-md-4">
+                <div class="card p-3 mb-2">
+
+
+                    <h3 class="heading"> <a href=" index.php?con=Empresa&ope=mostrar">Empresa </a></h3>
+
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card p-3 mb-2">
+
+
+                    <h3 class="heading"><a href=" index.php?con=Sector&ope=mostrarVinculados"> Sectores Vinculados</a></h3>
+
+
+
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card p-3 mb-2">
+
+
+                    <h3 class="heading"><a href=" index.php?con=Login&ope=formulario">Uso Formulario </a></h3>
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

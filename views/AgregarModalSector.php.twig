@@ -1,0 +1,45 @@
+{% extends "plantillaBase.php.twig" %}
+{% block script %}
+
+{% endblock %}
+
+{% block contenido %}
+
+   
+    <div class="modal fade" id="addnew" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h4 class="modal-title">Añadir Sector</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <form method="GET" action="index.php?con=Empresa&ope=anadirEmpresa">
+                            <input type="hidden" name="con" value="Sector"/>
+                            <input type="hidden" name="ope" value="anadirSector"/>
+
+
+
+                            <div class="form-group">
+                                <label style="color: black">Nombre Sector</label>
+                                <input type="text" class="form-control" name="nombre" />
+
+                            </div>
+                    </div> 
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>
+                        <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-check"></span> Añadir Sector</a>
+                            </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
